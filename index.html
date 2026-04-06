@@ -260,8 +260,8 @@
   .footer-logo { font-family: 'Courier New', Courier, monospace; font-size: 1rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--parchment-dim); }
   .footer-copy { font-size: 10px; letter-spacing: 0.25em; color: var(--parchment-dim); opacity: 0.4; }
 
-  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.9s ease, transform 0.9s ease; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .fade-in { opacity: 1; transform: translateY(0); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .fade-in.hidden { opacity: 0; transform: translateY(24px); }
 
   @media (max-width: 900px) {
     .services-grid { grid-template-columns: 1fr; }
