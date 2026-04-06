@@ -201,7 +201,8 @@
   .service-format-row::before { content: ''; display: block; width: 16px; height: 1px; background: var(--border-light); flex-shrink: 0; }
 
   #reels { background: var(--bg); }
-  .reels-grid { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: auto auto; gap: 1.5rem; }
+  .reels-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; }
+  .reels-grid-bottom { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
   .reel-item { position: relative; overflow: hidden; background: var(--bg3); border: 1px solid var(--border); cursor: pointer; }
   .reel-item.featured { grid-row: span 2; }
   .reel-item iframe { display: block; width: 100%; border: none; }
@@ -286,6 +287,7 @@
     .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
     .about-manifesto { border-left: none; padding-left: 0; border-top: 1px solid var(--border-light); padding-top: 2rem; }
     .reels-grid { grid-template-columns: 1fr; }
+    .reels-grid-bottom { grid-template-columns: 1fr; }
     .reel-item.featured { grid-row: span 1; }
     .reel-item.featured .reel-placeholder, .reel-item.featured iframe { min-height: 240px; }
     .photo-mosaic { grid-template-columns: repeat(6, 1fr); }
@@ -432,59 +434,47 @@
     <div class="section-line"></div>
     <h2>Video <em>&amp;</em> Reels</h2>
   </div>
-  <div class="reels-grid fade-in">
 
-    <!-- ═══════════════════════════════════════════
-         VIDEO 1 (featured, large)
-         Replace the reel-placeholder div with:
-
-         VIMEO:
-         <iframe src="https://player.vimeo.com/video/YOUR_ID?title=0&byline=0"
-           allowfullscreen style="min-height:440px;"></iframe>
-
-         YOUTUBE:
-         <iframe src="https://www.youtube.com/embed/YOUR_ID"
-           allowfullscreen style="min-height:440px;"></iframe>
-    ════════════════════════════════════════════════ -->
+  <div class="reels-grid">
     <div class="reel-item featured">
-      <div class="reel-placeholder">
-        <div class="play-btn"></div>
-        <span style="font-size:10px;letter-spacing:0.3em;color:var(--parchment-dim);text-transform:uppercase;opacity:0.5">Main Showreel</span>
-      </div>
+      <iframe src="https://player.vimeo.com/video/422812467?title=0&byline=0&portrait=0" allowfullscreen style="min-height:440px;"></iframe>
       <div class="reel-info">
-        <span class="reel-title">Showreel 2026</span>
-        <span class="reel-meta">Super 8 · 16mm</span>
+        <span class="reel-title">Numento</span>
+        <span class="reel-meta">Vimeo</span>
       </div>
     </div>
-
-    <!-- VIDEO 2 (small)
-         Replace with: <iframe src="..." allowfullscreen style="aspect-ratio:16/9;"></iframe>
-    -->
     <div class="reel-item">
-      <div class="reel-placeholder">
-        <div class="play-btn"></div>
-        <span style="font-size:10px;letter-spacing:0.3em;color:var(--parchment-dim);text-transform:uppercase;opacity:0.5">Short Film</span>
-      </div>
+      <iframe src="https://www.youtube.com/embed/VAKr7EM4Y2I" allowfullscreen style="aspect-ratio:16/9;"></iframe>
       <div class="reel-info">
-        <span class="reel-title">Project title</span>
-        <span class="reel-meta">2025</span>
+        <span class="reel-title">Fimbulvetr</span>
+        <span class="reel-meta">YouTube</span>
       </div>
     </div>
-
-    <!-- VIDEO 3 (small) -->
-    <div class="reel-item">
-      <div class="reel-placeholder">
-        <div class="play-btn"></div>
-        <span style="font-size:10px;letter-spacing:0.3em;color:var(--parchment-dim);text-transform:uppercase;opacity:0.5">Music Video</span>
-      </div>
-      <div class="reel-info">
-        <span class="reel-title">Project title</span>
-        <span class="reel-meta">2025</span>
-      </div>
-    </div>
-
   </div>
-  <p class="video-note fade-in">↑ Replace placeholders with your Vimeo or YouTube embeds</p>
+
+  <div class="reels-grid-bottom">
+    <div class="reel-item">
+      <iframe src="https://www.youtube.com/embed/8-fjVs9O7XM" allowfullscreen style="aspect-ratio:16/9;"></iframe>
+      <div class="reel-info">
+        <span class="reel-title">Loka</span>
+        <span class="reel-meta">YouTube</span>
+      </div>
+    </div>
+    <div class="reel-item">
+      <iframe src="https://www.youtube.com/embed/1CHzqiPRkj0" allowfullscreen style="aspect-ratio:16/9;"></iframe>
+      <div class="reel-info">
+        <span class="reel-title">Sonic Rites</span>
+        <span class="reel-meta">YouTube</span>
+      </div>
+    </div>
+    <div class="reel-item">
+      <iframe src="https://www.youtube.com/embed/g1NnOFmXBhc" allowfullscreen style="aspect-ratio:16/9;"></iframe>
+      <div class="reel-info">
+        <span class="reel-title">Radien</span>
+        <span class="reel-meta">YouTube</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="photography">
