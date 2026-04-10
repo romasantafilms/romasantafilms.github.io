@@ -222,12 +222,15 @@
   .video-note { margin-top: 2rem; font-size: 11px; letter-spacing: 0.25em; color: var(--parchment-dim); opacity: 0.5; text-align: center; }
 
   #photography { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .photo-mosaic { columns: 3; column-gap: 6px; }
-  .photo-item { break-inside: avoid; margin-bottom: 6px; background: var(--bg3); overflow: hidden; position: relative; cursor: zoom-in; display: block; }
-  .photo-fill { width: 100%; height: auto; display: block; transition: transform 0.6s ease; }
-  .photo-item:hover .photo-fill { transform: scale(1.03); }
-  .photo-overlay { position: absolute; inset: 0; background: rgba(8,6,8,0); transition: background 0.4s; pointer-events: none; }
-  .photo-item:hover .photo-overlay { background: rgba(8,6,8,0.35); }
+  .photo-gallery { display: flex; gap: 6px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; cursor: grab; -webkit-overflow-scrolling: touch; }
+  .photo-gallery:active { cursor: grabbing; }
+  .photo-gallery::-webkit-scrollbar { height: 2px; }
+  .photo-gallery::-webkit-scrollbar-track { background: var(--border); }
+  .photo-gallery::-webkit-scrollbar-thumb { background: var(--border-light); }
+  .photo-item { flex: 0 0 auto; scroll-snap-align: start; overflow: hidden; position: relative; cursor: zoom-in; }
+  .photo-item img { height: 320px; width: auto; display: block; transition: transform 0.5s ease; pointer-events: none; }
+  .photo-item:hover img { transform: scale(1.03); }
+  .photo-hint { font-size: 10px; color: var(--parchment-dim); letter-spacing: 0.3em; text-transform: uppercase; margin-top: 1rem; text-align: right; opacity: 0.5; }
 
   #collaborations { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .collab-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border); }
@@ -294,8 +297,8 @@
     .collab-item:last-child { border-bottom: none; }
     .collab-videos { grid-template-columns: 1fr; }
     .reel-item.featured .reel-placeholder, .reel-item.featured iframe { min-height: 240px; }
-    .photo-mosaic { columns: 2; }
-    .photo-item:nth-child(1) { break-inside: avoid; }
+    .photo-gallery { gap: 4px; }
+    .photo-item img { height: 220px; }
     footer { flex-direction: column; gap: 1rem; text-align: center; }
   }
 </style>
@@ -488,27 +491,27 @@
     <div class="section-line"></div>
     <h2><em>Analogue</em> Photography</h2>
   </div>
-  <div class="photo-mosaic fade-in">
-    <!-- ═══════════════════════════════════════════
-         PHOTOS: Replace each photo-placeholder div with:
-         <img class="photo-fill" src="photo-01.jpg" alt="Brief description">
-
-         Upload your photos to an /img/ folder in the repository.
-         Recommended: export at 1200px wide, keep under 500kb each.
-    ════════════════════════════════════════════════ -->
-    <div class="photo-item"><img class="photo-fill" src="photo-03.jpg" alt="Infrared landscape"><div class="photo-overlay"></div></div>
-    <div class="photo-item"><img class="photo-fill" src="photo-02.jpg" alt="Hooded figure with chain"><div class="photo-overlay"></div></div>
-    <div class="photo-item"><img class="photo-fill" src="photo-01.jpg" alt="Portrait under autumn tree"><div class="photo-overlay"></div></div>
-    <div class="photo-item"><img class="photo-fill" src="photo-09.jpg" alt="Orange hair"><div class="photo-overlay"></div></div>
-    <div class="photo-item"><img class="photo-fill" src="photo-10.jpg" alt="Fur hat lights"><div class="photo-overlay"></div></div>
-    <div class="photo-item"><img class="photo-fill" src="photo-05.jpg" alt="Radien band blue light"><div class="photo-overlay"></div></div>
-    <div class="photo-item"><img class="photo-fill" src="photo-07.jpg" alt="Figure in dark room"><div class="photo-overlay"></div></div>
-    <div class="photo-item"><img class="photo-fill" src="photo-11.jpg" alt="Guitar amp"><div class="photo-overlay"></div></div>
-    <div class="photo-item"><img class="photo-fill" src="photo-08.jpg" alt="Woman on foggy road"><div class="photo-overlay"></div></div>
-    <div class="photo-item"><img class="photo-fill" src="photo-04.jpg" alt="Double exposure skull"><div class="photo-overlay"></div></div>
-    <div class="photo-item"><img class="photo-fill" src="photo-12.jpg" alt="Wedding fireworks"><div class="photo-overlay"></div></div>
-    <div class="photo-item"><img class="photo-fill" src="photo-06.jpg" alt="Back with text"><div class="photo-overlay"></div></div>
+  <div class="photo-gallery" id="photo-gallery">
+    <div class="photo-item"><img src="photo-03.jpg" alt="Infrared landscape"></div>
+    <div class="photo-item"><img src="photo-01.jpg" alt="Portrait autumn tree"></div>
+    <div class="photo-item"><img src="photo-15.jpg" alt="Singer on stage"></div>
+    <div class="photo-item"><img src="photo-05.jpg" alt="Radien blue light"></div>
+    <div class="photo-item"><img src="photo-02.jpg" alt="Hooded figure chain"></div>
+    <div class="photo-item"><img src="photo-17.jpg" alt="Band fisheye guitars"></div>
+    <div class="photo-item"><img src="photo-09.jpg" alt="Orange hair umbrella"></div>
+    <div class="photo-item"><img src="photo-10.jpg" alt="Fur hat bokeh lights"></div>
+    <div class="photo-item"><img src="photo-07.jpg" alt="Figure dark room"></div>
+    <div class="photo-item"><img src="photo-16.jpg" alt="Portrait round glasses"></div>
+    <div class="photo-item"><img src="photo-14.jpg" alt="Couple by water"></div>
+    <div class="photo-item"><img src="photo-18.jpg" alt="Dog in snow"></div>
+    <div class="photo-item"><img src="photo-04.jpg" alt="Double exposure skull"></div>
+    <div class="photo-item"><img src="photo-08.jpg" alt="Woman foggy road"></div>
+    <div class="photo-item"><img src="photo-11.jpg" alt="Guitar amp stage"></div>
+    <div class="photo-item"><img src="photo-12.jpg" alt="Wedding fireworks"></div>
+    <div class="photo-item"><img src="photo-13.jpg" alt="Helsinki street portrait"></div>
+    <div class="photo-item"><img src="photo-06.jpg" alt="Back with text"></div>
   </div>
+  <p class="photo-hint">drag to explore →</p>
 </section>
 
 <section id="collaborations">
@@ -612,11 +615,33 @@
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   setTimeout(() => document.querySelector('#hero .fade-in')?.classList.add('visible'), 100);
+
+  // Drag to scroll gallery
+  const gallery = document.getElementById('photo-gallery');
+  if (gallery) {
+    let isDown = false, startX, scrollLeft;
+    gallery.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - gallery.offsetLeft; scrollLeft = gallery.scrollLeft; gallery.style.cursor = 'grabbing'; });
+    gallery.addEventListener('mouseleave', () => { isDown = false; gallery.style.cursor = 'grab'; });
+    gallery.addEventListener('mouseup', () => { isDown = false; gallery.style.cursor = 'grab'; });
+    gallery.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - gallery.offsetLeft; gallery.scrollLeft = scrollLeft - (x - startX) * 1.5; });
+  }
+
+  // Lightbox
+  const lb = document.createElement('div');
+  lb.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(8,6,8,0.97);z-index:99999;align-items:center;justify-content:center;cursor:zoom-out;';
+  const lbImg = document.createElement('img');
+  lbImg.style.cssText = 'max-width:94vw;max-height:94vh;object-fit:contain;';
+  lb.appendChild(lbImg);
+  document.body.appendChild(lb);
+  document.querySelectorAll('.photo-item img').forEach(img => {
+    img.parentElement.addEventListener('click', () => { lbImg.src = img.src; lb.style.display = 'flex'; });
+  });
+  lb.addEventListener('click', () => lb.style.display = 'none');
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.style.display = 'none'; });
 
   // Lightbox
   const lb = document.createElement('div');
