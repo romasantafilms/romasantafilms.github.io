@@ -179,6 +179,8 @@
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
   .about-text p { color: var(--parchment-dim); line-height: 2; font-size: 13px; letter-spacing: 0.06em; margin-bottom: 1.5rem; }
   .about-text p strong { color: var(--parchment); font-weight: 400; }
+  .about-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; filter: sepia(20%) contrast(110%) brightness(0.85); margin-top: 2rem; border: 1px solid var(--border); }
+  .service-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; filter: sepia(20%) contrast(110%) brightness(0.8); margin-bottom: 1.5rem; display: block; }
   .about-manifesto { border-left: 1px solid var(--border-light); padding-left: 3rem; }
   .about-manifesto blockquote {
     font-family: 'Cormorant Garamond', serif;
@@ -332,6 +334,7 @@
     Free 8mm stock footage: https://www.pexels.com/search/videos/8mm%20film/
                              https://archive.org/search?query=8mm+film&mediatype=movies
   -->
+  <video class="hero-video" autoplay muted loop playsinline src="img/hero.mp4"></video>
   <div class="hero-bg"></div>
   <div class="hero-line"></div>
   <div class="hero-year">MMXXVI — Helsinki</div>
@@ -368,6 +371,7 @@
         We also run our own darkroom, handling film developing for both
         motion picture and still photography across virtually every format.
       </p>
+      <img class="about-img" src="img/about-02.webp" alt="On set in Helsinki">
     </div>
     <div class="about-manifesto fade-in">
       <blockquote>
@@ -388,6 +392,7 @@
   <div class="services-grid fade-in">
 
     <div class="service-item">
+      <img class="service-img" src="img/about-01.webp" alt="Video production">
       <span class="service-num">001</span>
       <div class="service-title">Video<br>Production</div>
       <p class="service-desc">
@@ -404,6 +409,7 @@
     </div>
 
     <div class="service-item">
+      <img class="service-img" src="img/about-03.webp" alt="Analogue photography">
       <span class="service-num">002</span>
       <div class="service-title">Analogue<br>Photography</div>
       <p class="service-desc">
@@ -503,14 +509,14 @@
          Upload your photos to an /img/ folder in the repository.
          Recommended: export at 1200px wide, keep under 500kb each.
     ════════════════════════════════════════════════ -->
-    <div class="photo-item"><div class="photo-placeholder">Photo 01</div><div class="photo-overlay"></div></div>
-    <div class="photo-item"><div class="photo-placeholder">Photo 02</div><div class="photo-overlay"></div></div>
-    <div class="photo-item"><div class="photo-placeholder">Photo 03</div><div class="photo-overlay"></div></div>
-    <div class="photo-item"><div class="photo-placeholder">Photo 04</div><div class="photo-overlay"></div></div>
-    <div class="photo-item"><div class="photo-placeholder">Photo 05</div><div class="photo-overlay"></div></div>
-    <div class="photo-item"><div class="photo-placeholder">Photo 06</div><div class="photo-overlay"></div></div>
-    <div class="photo-item"><div class="photo-placeholder">Photo 07</div><div class="photo-overlay"></div></div>
-    <div class="photo-item"><div class="photo-placeholder">Photo 08</div><div class="photo-overlay"></div></div>
+    <div class="photo-item"><img class="photo-fill" src="img/photo-01.jpg" alt="Portrait under autumn tree"><div class="photo-overlay"></div></div>
+    <div class="photo-item"><img class="photo-fill" src="img/photo-02.jpg" alt="Hooded figure with chain"><div class="photo-overlay"></div></div>
+    <div class="photo-item"><img class="photo-fill" src="img/photo-03.jpg" alt="Infrared landscape"><div class="photo-overlay"></div></div>
+    <div class="photo-item"><img class="photo-fill" src="img/photo-04.jpg" alt="Double exposure portrait with skull"><div class="photo-overlay"></div></div>
+    <div class="photo-item"><img class="photo-fill" src="img/photo-05.jpg" alt="Radien band blue light"><div class="photo-overlay"></div></div>
+    <div class="photo-item"><img class="photo-fill" src="img/photo-06.jpg" alt="Back with text"><div class="photo-overlay"></div></div>
+    <div class="photo-item"><img class="photo-fill" src="img/photo-07.jpg" alt="Figure in dark room"><div class="photo-overlay"></div></div>
+    <div class="photo-item"><img class="photo-fill" src="img/photo-08.jpg" alt="Woman on foggy road"><div class="photo-overlay"></div></div>
   </div>
 </section>
 
