@@ -13,7 +13,7 @@
     --crimson: #7a1520;
     --crimson-light: #b02030;
     --parchment: #d6cbbe;
-    --parchment-dim: #8a8078;
+    --parchment-dim: #b0a898;
     --border: #2a1f2a;
     --border-light: #3d2e3d;
   }
@@ -26,7 +26,7 @@
     color: var(--parchment);
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: 0.05em;
     overflow-x: hidden;
     cursor: default;
@@ -85,7 +85,15 @@
     position: relative;
   }
   .nav-logo span { color: var(--crimson-light); }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; position: relative; }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; position: relative; z-index: 101; }
+  .nav-hamburger span { display: block; width: 22px; height: 1px; background: var(--parchment); transition: all 0.3s; }
+  .nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+  .nav-dropdown { display: none; position: fixed; inset: 0; background: rgba(8,6,8,0.98); z-index: 100; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+  .nav-dropdown.open { display: flex; }
+  .nav-dropdown a { color: var(--parchment-dim); text-decoration: none; font-size: 1.2rem; letter-spacing: 0.3em; text-transform: uppercase; transition: color 0.3s; }
+  .nav-dropdown a:hover { color: var(--parchment); }
   .nav-links a {
     color: var(--parchment-dim);
     text-decoration: none;
@@ -177,7 +185,7 @@
 
   #about { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
-  .about-text p { color: var(--parchment-dim); line-height: 2; font-size: 13px; letter-spacing: 0.06em; margin-bottom: 1.5rem; }
+  .about-text p { color: var(--parchment-dim); line-height: 2; font-size: 15px; letter-spacing: 0.04em; margin-bottom: 1.5rem; }
   .about-text p strong { color: var(--parchment); font-weight: 400; }
   .about-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; margin-top: 2rem; border: 1px solid var(--border); }
   .service-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; margin-bottom: 1.5rem; display: block; }
@@ -244,7 +252,7 @@
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
   .contact-left h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.1; margin-bottom: 2rem; }
   .contact-left h3 em { font-style: italic; color: var(--crimson-light); }
-  .contact-left p { color: var(--parchment-dim); line-height: 1.9; font-size: 13px; letter-spacing: 0.06em; }
+  .contact-left p { color: var(--parchment-dim); line-height: 1.9; font-size: 15px; letter-spacing: 0.04em; }
   .contact-details { margin-top: 3rem; display: flex; flex-direction: column; gap: 1.5rem; }
   .contact-item { display: flex; align-items: baseline; gap: 1.5rem; }
   .contact-label { font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--crimson-light); min-width: 60px; opacity: 0.8; }
@@ -275,8 +283,8 @@
   }
   @media (max-width: 768px) {
     nav { padding: 1.2rem 1.5rem; }
-    .nav-links { gap: 1.2rem; }
-    .nav-links a { font-size: 10px; letter-spacing: 0.15em; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
     #hero { padding: 0 1.5rem 3.5rem; justify-content: center; }
     .hero-content { max-width: 100%; }
     .hero-tag { font-size: 9px; letter-spacing: 0.25em; margin-bottom: 1.2rem; }
@@ -314,7 +322,18 @@
     <li><a href="#photography">Photography</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+
+<div class="nav-dropdown" id="nav-dropdown">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#reels" onclick="closeMenu()">Video</a>
+  <a href="#photography" onclick="closeMenu()">Photography</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
 
 <section id="hero">
   <!--
@@ -616,6 +635,15 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('nav-dropdown').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('nav-dropdown').classList.remove('open');
+  }
+
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1 });
