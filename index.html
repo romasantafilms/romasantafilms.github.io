@@ -222,11 +222,11 @@
   .video-note { margin-top: 2rem; font-size: 11px; letter-spacing: 0.25em; color: var(--parchment-dim); opacity: 0.5; text-align: center; }
 
   #photography { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .photo-gallery { display: flex; gap: 6px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; cursor: grab; -webkit-overflow-scrolling: touch; }
+  .photo-gallery { display: flex; gap: 6px; overflow-x: scroll; overflow-y: hidden; padding-bottom: 12px; cursor: grab; -webkit-overflow-scrolling: touch; user-select: none; }
   .photo-gallery:active { cursor: grabbing; }
-  .photo-gallery::-webkit-scrollbar { height: 2px; }
+  .photo-gallery::-webkit-scrollbar { height: 3px; }
   .photo-gallery::-webkit-scrollbar-track { background: var(--border); }
-  .photo-gallery::-webkit-scrollbar-thumb { background: var(--border-light); }
+  .photo-gallery::-webkit-scrollbar-thumb { background: var(--crimson-light); }
   .photo-item { flex: 0 0 auto; scroll-snap-align: start; overflow: hidden; position: relative; cursor: zoom-in; }
   .photo-item img { height: 320px; width: auto; display: block; transition: transform 0.5s ease; pointer-events: none; }
   .photo-item:hover img { transform: scale(1.03); }
@@ -492,24 +492,26 @@
     <h2><em>Analogue</em> Photography</h2>
   </div>
   <div class="photo-gallery" id="photo-gallery">
-    <div class="photo-item"><img src="photo-03.jpg" alt="Infrared landscape"></div>
     <div class="photo-item"><img src="photo-01.jpg" alt="Portrait autumn tree"></div>
-    <div class="photo-item"><img src="photo-15.jpg" alt="Singer on stage"></div>
     <div class="photo-item"><img src="photo-05.jpg" alt="Radien blue light"></div>
+    <div class="photo-item"><img src="photo-16.jpg" alt="Portrait round glasses"></div>
+    <div class="photo-item"><img src="photo-09.jpg" alt="Orange hair umbrella"></div>
+    <div class="photo-item"><img src="photo-20.jpg" alt="Orange amp stage"></div>
+    <div class="photo-item"><img src="photo-19.jpg" alt="Portrait blur forest"></div>
+    <div class="photo-item"><img src="photo-12.jpg" alt="Wedding fireworks"></div>
+    <div class="photo-item"><img src="photo-15.jpg" alt="Singer on stage"></div>
     <div class="photo-item"><img src="photo-02.jpg" alt="Hooded figure chain"></div>
     <div class="photo-item"><img src="photo-17.jpg" alt="Band fisheye guitars"></div>
-    <div class="photo-item"><img src="photo-09.jpg" alt="Orange hair umbrella"></div>
-    <div class="photo-item"><img src="photo-10.jpg" alt="Fur hat bokeh lights"></div>
-    <div class="photo-item"><img src="photo-07.jpg" alt="Figure dark room"></div>
-    <div class="photo-item"><img src="photo-16.jpg" alt="Portrait round glasses"></div>
-    <div class="photo-item"><img src="photo-14.jpg" alt="Couple by water"></div>
-    <div class="photo-item"><img src="photo-18.jpg" alt="Dog in snow"></div>
-    <div class="photo-item"><img src="photo-04.jpg" alt="Double exposure skull"></div>
-    <div class="photo-item"><img src="photo-08.jpg" alt="Woman foggy road"></div>
     <div class="photo-item"><img src="photo-11.jpg" alt="Guitar amp stage"></div>
-    <div class="photo-item"><img src="photo-12.jpg" alt="Wedding fireworks"></div>
+    <div class="photo-item"><img src="photo-04.jpg" alt="Double exposure skull"></div>
+    <div class="photo-item"><img src="photo-14.jpg" alt="Couple by water"></div>
+    <div class="photo-item"><img src="photo-10.jpg" alt="Fur hat bokeh lights"></div>
     <div class="photo-item"><img src="photo-13.jpg" alt="Helsinki street portrait"></div>
+    <div class="photo-item"><img src="photo-18.jpg" alt="Dog in snow"></div>
+    <div class="photo-item"><img src="photo-07.jpg" alt="Figure dark room"></div>
     <div class="photo-item"><img src="photo-06.jpg" alt="Back with text"></div>
+    <div class="photo-item"><img src="photo-03.jpg" alt="Infrared landscape"></div>
+    <div class="photo-item"><img src="photo-08.jpg" alt="Woman foggy road"></div>
   </div>
   <p class="photo-hint">drag to explore →</p>
 </section>
@@ -578,7 +580,7 @@
       <div class="contact-details">
         <div class="contact-item">
           <span class="contact-label">Email</span>
-          <span class="contact-val"><a href="mailto:romasantafilm@gmail.com" style="color:var(--parchment);text-decoration:none;">romasantafilm@gmail.com</a></span>
+          <span class="contact-val"><a href="mailto:info@romasantafilms.com" style="color:var(--parchment);text-decoration:none;">info@romasantafilms.com</a></span>
         </div>
         <div class="contact-item">
           <span class="contact-label">Instagram</span>
@@ -613,7 +615,7 @@
   <span class="footer-copy">© 2026 — Helsinki, Finland</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1 });
@@ -624,10 +626,31 @@
   const gallery = document.getElementById('photo-gallery');
   if (gallery) {
     let isDown = false, startX, scrollLeft;
-    gallery.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - gallery.offsetLeft; scrollLeft = gallery.scrollLeft; gallery.style.cursor = 'grabbing'; });
-    gallery.addEventListener('mouseleave', () => { isDown = false; gallery.style.cursor = 'grab'; });
-    gallery.addEventListener('mouseup', () => { isDown = false; gallery.style.cursor = 'grab'; });
-    gallery.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - gallery.offsetLeft; gallery.scrollLeft = scrollLeft - (x - startX) * 1.5; });
+
+    gallery.addEventListener('mousedown', e => {
+      isDown = true;
+      gallery.classList.add('active');
+      startX = e.pageX - gallery.getBoundingClientRect().left;
+      scrollLeft = gallery.scrollLeft;
+      e.preventDefault();
+    });
+    document.addEventListener('mouseup', () => { isDown = false; gallery.classList.remove('active'); });
+    document.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      const x = e.pageX - gallery.getBoundingClientRect().left;
+      gallery.scrollLeft = scrollLeft - (x - startX);
+    });
+
+    // Touch support
+    let touchStart, touchScrollLeft;
+    gallery.addEventListener('touchstart', e => {
+      touchStart = e.touches[0].pageX;
+      touchScrollLeft = gallery.scrollLeft;
+    }, { passive: true });
+    gallery.addEventListener('touchmove', e => {
+      const x = e.touches[0].pageX;
+      gallery.scrollLeft = touchScrollLeft - (x - touchStart);
+    }, { passive: true });
   }
 
   // Lightbox
@@ -654,12 +677,4 @@
   document.querySelectorAll('.photo-item img').forEach(img => {
     img.parentElement.style.cursor = 'zoom-in';
     img.parentElement.addEventListener('click', () => {
-      lbImg.src = img.src;
-      lb.style.display = 'flex';
-    });
-  });
-  lb.addEventListener('click', () => { lb.style.display = 'none'; });
-  document.addEventListener('keydown', e => { if(e.key === 'Escape') lb.style.display = 'none'; });
-</script>
-</body>
-</html>
+      lbImg.src = i
