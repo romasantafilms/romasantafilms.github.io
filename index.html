@@ -237,15 +237,15 @@
   .photo-overlay { position: absolute; inset: 0; background: rgba(122,21,32,0); transition: background 0.4s; }
   .photo-item:hover .photo-overlay { background: rgba(122,21,32,0.15); }
 
-  #contact { background: var(--bg); }
   #collaborations { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .collab-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border); }
   .collab-item { padding: 3rem 2.5rem; display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border); transition: background 0.3s; }
   .collab-item:last-child { border-right: none; }
   .collab-item:hover { background: var(--bg2); }
-  .collab-item a { color: var(--parchment-dim); text-decoration: none; opacity: 0.4; transition: opacity 0.3s; display: flex; align-items: center; }
-  .collab-item:hover a { opacity: 0.9; }
-  .collab-item svg { width: 100%; max-width: 160px; height: auto; }
+  .collab-item a { text-decoration: none; opacity: 0.35; transition: opacity 0.3s; display: flex; align-items: center; justify-content: center; }
+  .collab-item:hover a { opacity: 0.85; }
+  .collab-item img { width: 100%; max-width: 140px; height: auto; filter: invert(1) brightness(2); }
+  .collab-videos { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
   .contact-left h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.1; margin-bottom: 2rem; }
   .contact-left h3 em { font-style: italic; color: var(--crimson-light); }
@@ -300,6 +300,7 @@
     .collab-grid { grid-template-columns: 1fr; }
     .collab-item { border-right: none; border-bottom: 1px solid var(--border); }
     .collab-item:last-child { border-bottom: none; }
+    .collab-videos { grid-template-columns: 1fr; }
     .reel-item.featured .reel-placeholder, .reel-item.featured iframe { min-height: 240px; }
     .photo-mosaic { grid-template-columns: repeat(6, 1fr); }
     .photo-item:nth-child(1) { grid-column: span 6; grid-row: span 3; }
@@ -522,30 +523,40 @@
   <div class="collab-grid">
 
     <div class="collab-item">
+      <a href="https://osgenic.com" target="_blank" rel="noopener">
+        <img src="https://images.squarespace-cdn.com/content/v1/64381be9154e090997f2ce61/f7dec091-8c42-4131-ba62-e3214412e4a2/svgviewer-png-output.png?format=500w" alt="Osgenic">
+      </a>
+    </div>
+
+    <div class="collab-item">
       <a href="https://www.vice.com" target="_blank" rel="noopener">
-        <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="34" font-family="'Courier New', monospace" font-size="40" font-weight="700" fill="currentColor" letter-spacing="-2">VICE</text>
-        </svg>
+        <img src="https://images.squarespace-cdn.com/content/v1/64381be9154e090997f2ce61/5e76fe01-136e-4048-8c59-5956a8c1d556/VICE_NEWS_BLACK-e1617894480279.png?format=500w" alt="Vice">
       </a>
     </div>
 
     <div class="collab-item">
       <a href="https://www.aalto.fi" target="_blank" rel="noopener">
-        <svg viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="22" font-family="'Courier New', monospace" font-size="22" font-weight="700" fill="currentColor" letter-spacing="1">AALTO</text>
-          <text x="0" y="44" font-family="'Courier New', monospace" font-size="14" font-weight="400" fill="currentColor" letter-spacing="3">UNIVERSITY</text>
-        </svg>
+        <img src="https://images.squarespace-cdn.com/content/v1/64381be9154e090997f2ce61/edea9fd4-8e14-4571-8d58-cddf2d076148/1200px-Aalto_University_logo.svg.png?format=300w" alt="Aalto University">
       </a>
     </div>
 
-    <div class="collab-item">
-      <a href="https://osgenic.com" target="_blank" rel="noopener">
-        <svg viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="32" font-family="'Courier New', monospace" font-size="30" font-weight="300" fill="currentColor" letter-spacing="2">OSGENIC</text>
-        </svg>
-      </a>
-    </div>
+  </div>
 
+  <div class="collab-videos">
+    <div class="reel-item">
+      <iframe src="https://www.youtube.com/embed/yN60eCMuX_w" allowfullscreen style="aspect-ratio:16/9;display:block;width:100%;border:none;"></iframe>
+      <div class="reel-info">
+        <span class="reel-title">Osgenic</span>
+        <span class="reel-meta">Collaboration</span>
+      </div>
+    </div>
+    <div class="reel-item">
+      <iframe src="https://www.youtube.com/embed/ez2CF-mg0j4?start=111" allowfullscreen style="aspect-ratio:16/9;display:block;width:100%;border:none;"></iframe>
+      <div class="reel-info">
+        <span class="reel-title">Aalto University</span>
+        <span class="reel-meta">Collaboration</span>
+      </div>
+    </div>
   </div>
 </section>
 
