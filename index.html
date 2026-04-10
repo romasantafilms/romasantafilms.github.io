@@ -179,8 +179,8 @@
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
   .about-text p { color: var(--parchment-dim); line-height: 2; font-size: 13px; letter-spacing: 0.06em; margin-bottom: 1.5rem; }
   .about-text p strong { color: var(--parchment); font-weight: 400; }
-  .about-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; filter: sepia(20%) contrast(110%) brightness(0.85); margin-top: 2rem; border: 1px solid var(--border); }
-  .service-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; filter: sepia(20%) contrast(110%) brightness(0.8); margin-bottom: 1.5rem; display: block; }
+  .about-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; margin-top: 2rem; border: 1px solid var(--border); }
+  .service-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; margin-bottom: 1.5rem; display: block; }
   .about-manifesto { border-left: 1px solid var(--border-light); padding-left: 3rem; }
   .about-manifesto blockquote {
     font-family: 'Cormorant Garamond', serif;
@@ -385,7 +385,6 @@
         We also run our own darkroom, handling film developing for both
         motion picture and still photography across virtually every format.
       </p>
-      <img class="about-img" src="about-02.webp" alt="On set in Helsinki">
     </div>
     <div class="about-manifesto fade-in">
       <blockquote>
@@ -641,4 +640,28 @@
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target);
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  setTimeout(() => document.querySelector('#hero .fade-in')?.classList.add('visible'), 100);
+
+  // Lightbox
+  const lb = document.createElement('div');
+  lb.id = 'lightbox';
+  lb.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(8,6,8,0.96);z-index:99999;align-items:center;justify-content:center;cursor:zoom-out;';
+  const lbImg = document.createElement('img');
+  lbImg.style.cssText = 'max-width:92vw;max-height:92vh;object-fit:contain;border:1px solid #2a1f2a;';
+  lb.appendChild(lbImg);
+  document.body.appendChild(lb);
+  document.querySelectorAll('.photo-item img').forEach(img => {
+    img.parentElement.style.cursor = 'zoom-in';
+    img.parentElement.addEventListener('click', () => {
+      lbImg.src = img.src;
+      lb.style.display = 'flex';
+    });
+  });
+  lb.addEventListener('click', () => { lb.style.display = 'none'; });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') lb.style.display = 'none'; });
+</script>
+</body>
+</html>
